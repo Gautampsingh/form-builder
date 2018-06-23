@@ -1,0 +1,124 @@
+.editor-container .editor-content-container .editor-content .editor-tool.page .editor-tool.label{ 
+	background: #3F98D4; 
+}
+
+.editor-tool.page{ max-width: 900px;}
+.editor-tool.page .edit_container{ 
+	display: table; width: 100%;	
+	min-height: 34px;
+	box-sizing: border-box;
+	table-layout: fixed;
+}
+.editor-tool.page .edit_container > span.cell {  display: table-cell; vertical-align: middle; }
+.editor-tool.page .edit_container > span.cell input[type=text], .editor-tool.page .edit_container > span.cell input[type=password],
+.editor-tool.page .edit_container > span.cell textarea, .editor-tool.page .edit_container > span.cell select{ 
+	width: 150px;
+	border: 1px #2A80B9 solid; padding: 3px; 
+	background-color: transparent;
+	font-size: 14px; 
+	border-radius: 4px;
+	outline: none;
+	color: #2A80B9;	
+	font-size: 13px;
+	box-sizing: border-box;
+}
+.editor-tool.page .edit_container > span.cell input[type=password]{
+	background: transparent url(../images/keyb16.png) no-repeat 5px center;
+}
+
+.editor-tool.page .edit_container > span.cell{
+	padding: 10px;
+	box-sizing: border-box;
+}
+.editor-tool.page .edit_container > span.cell.edit{
+	text-align: right; font-size: 13px; text-transform: capitalize;
+}
+
+.editor-tool.page .edit_container > span.cell.edit.hasIcon {
+	box-sizing: border-box;
+	width: 50px;
+	cursor: pointer;
+}
+
+.edit_container > span.cell.toolLabel{ width: 300px; font-size: 13px;}
+
+
+/* PAGE TOOL */
+.editor-tool.page .edit_container.page{ background: #2A80B9; color: #ffffff;min-height: 34px; }
+
+
+/* BUTTON TOOL */
+.editor-tool.page .edit_container.button .button{
+	min-width: 150px; max-width: 300px;
+	height: 30px; padding: 3px 10px 3px 10px;
+	
+	vertical-align: middle;
+	box-sizing: border-box;
+	display: table-cell; font-size: 13px;
+	border-radius: 10px;
+	background: #2A80B9;
+	text-align: center;
+	color: #ffffff;
+}
+
+/* LINK TOOL */
+.editor-tool.page .edit_container.link a.link{
+	color: #2A80B9; text-decoration: underline;
+	font-size: 13px;
+}
+
+/* VIDEO TOOL */
+.editor-tool.video .edit_container.video span.video{
+	height: 34px;
+	background: url(../images/youtubeb.png) no-repeat center -7px;
+	border: 1px #2A80B9 dashed;
+	border-radius: 5px;
+}
+
+/* CALENDER TOOL */
+.editor-tool.calendar .edit_container.calendar .calendar{
+	background: url(../images/calendarb.png) no-repeat 5px center;
+}
+
+/* MULTISELECT TOOL */
+.editor-tool.multiselect .edit_container.multiselect .multiselect{
+	background: url(../images/multiselectb.png) no-repeat 5px center;
+}
+
+/* IMAGE TOOL */
+.editor-tool.image .edit_container.image span.image{
+	height: 45px;
+	background: url(../images/imageb.png) no-repeat center center;
+	border: 1px #2A80B9 dashed;
+	border-radius: 5px;
+}
+
+/* SEPERATOR TOOL */
+.editor-tool.seperator{ padding: 0 !important; }
+.editor-tool.seperator .edit_container.seperator{
+	height: 30px;
+	border: 1px dashed #2A80B9;
+}
+
+/* LABEL TOOL */
+.editor-tool.label h2{ 
+	color: #ffffff;
+	line-height: 15px;
+	font-size: 13px;
+	min-height: 15px;
+}
+
+.editor-properties .tabular-title.property{	
+	width: 100%;
+	box-sizing: border-box;
+}
+.editor-properties .tabular-title.property th{
+	width: 70px; padding: 10px; 
+	text-align: left;
+	box-sizing: border-box;
+}
+.editor-properties .tabular-title.property td{
+	padding: 10px;
+	box-sizing: border-box;
+	text-transform: capitalize;
+}

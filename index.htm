@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="Feedback Form Builder">
+		<meta name="author" content="Goutam Singh | gmserve.com | Feedback Form Builder"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="GMserve, Goutam Singh, Web Development, Cool Javascript, Frontend, Form Builder"/>
+		<title>FormBuilder</title>
+		<link rel="stylesheet" href="styles/reset.css" />
+		<link rel="stylesheet" href="styles/main.css" />
+		<link rel="stylesheet" href="styles/theme_default.css" />
+		<link rel="stylesheet" href="styles/tools.css" />
+	</head>
+	<body class="production">
+
+		<div class="editor-container">
+
+			<div class="editor-header"> <h1>Form Builder <strong>(BETA)</strong></h1> </div>
+			<div class="editor-menu-bar" id="menuOptions">
+				<a data-editor-action="save">Simulate Save</a>
+				<a data-editor-action="clear">Clear</a>
+				<a data-editor-action="getJson">Show JSON</a>
+			</div>
+			<div class="editor-content-container">
+				<div class="editor-sidebar"> 
+					<h2> Tools </h2>
+					<div class="editor-tools" id="editorTools"></div>
+				</div>
+				<div class="editor-content" id="editorContent"></div>
+				<div class="editor-properties">
+					<div class="properties" id="properties"></div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<!-- SYSTEM TEMPLATES -->
+		<script type="text/handlebars" id="template_tools">
+			<div class="{{name}} tool" draggable="true" data-tooltype="{{name}}">{{caption}}</div>
+		</script>
+		<script type="text/handlebars" id="template_tool">
+			<div class="{{name}} editor-tool" data-tooltype="{{name}}" id="{{guid}}" >{{{html}}}</div>
+		</script>
+		<script type="text/handlebars" id="template_properties" >
+			<table class="tabular-title property">
+				<tr><th>ID</th> <td>{{guid}}</td></tr>
+				<tr><th>Type</th> <td>{{type}}</td></tr>
+			</table>
+			{{#forEach properties}}
+				{{#notAProp key}}
+					<h2>{{controlName key}}</h2>
+					<div class="property"> {{control key value}} </div>
+				{{/notAProp}}
+			{{/forEach}}
+			<br />
+			
+			{{#unless properties.PROP_hidePlacement}}
+			<h1>Placement</h1>
+			<div class="unselectable">
+				<a {{action 'moveup'}} class="button blue unselectable">Move UP</a>
+				<a {{action 'movedown'}} class="button blue unselectable">Move Down</a>
+			</div>
+			{{/unless}}
+			
+			{{#unless properties.PROP_hideActions}}
+			<h1>Actions</h1>
+			<a {{action 'remove'}} class="button red">Remove tool</a>
+			{{/unless}}
+
+		</script>
+		<!-- END SYSTEM TEMPLATES   -->
+
+		<!-- USER TEMPLATES -->
+		<script type="text/handlebars" id="template_page">
+			<div class="edit_container page">
+				<span class="cell"> <span class="label" {{updateable 'title' 'DEFAULT PAGE TITLE'}}></span> </span>
+				<span class="edit cell hasIcon white" {{action 'edit'}}> </span>
+			</div>
+			<input type="hidden" {{updateable 'page_name'}} />
+		</script>
+
+		<script type="text/handlebars" id="template_button">
+			<div class="edit_container button"> 
+				<span class="cell"> <span class="button" {{updateable 'label'}}></span> </span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>
+			<input type="hidden" {{updateable 'TXA_message_text'}} />
+			<input type="hidden" {{updateable 'show_page_with_ID'}} />
+		</script>
+
+		<script type="text/handlebars" id="template_textbox">
+			<div class="edit_container textbox">
+				<input type="hidden" {{updateable 'CHK_Required' 'off'}} />
+				<span class="cell toolLabel" {{updateable 'label' 'INPUT TEXT LABEL: '}}> </span>
+				<span class="cell"> <input type="text" readonly="readonly" {{updateable 'text'}} /></span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>			
+		</script>
+		<script type="text/handlebars" id="template_password">
+			<div class="edit_container password">
+				<span class="cell toolLabel" {{updateable 'label' 'INPUT TEXT LABEL: '}}> </span>
+				<span class="cell"><input type="password" readonly="readonly" /></span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>			
+		</script>
+		<script type="text/handlebars" id="template_textarea">
+			<div class="edit_container textarea">
+				<span class="cell toolLabel" {{updateable 'label' 'INPUT TEXT LABEL: '}}> </span>			
+				<span class="cell"><textarea readonly="readonly" ></textarea></span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>
+		</script>
+		<script type="text/handlebars" id="template_selectbox">
+		
+			<div class="edit_container selectbox">
+				<span class="cell toolLabel" {{updateable 'label' 'INPUT TEXT LABEL: '}}> </span>
+				<span class="cell"><select disabled="disabled"></select></span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>
+		</script>
+		<script type="text/handlebars" id="template_link">
+			<input type="hidden" {{updateable 'Url'}} />
+			<div class="edit_container link">
+				<span class="cell"> <a class="link" {{updateable 'text' 'Click to visit (Web Link)'}}></a> </span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>
+		</script>
+		<script type="text/handlebars" id="template_seperator">
+			<div class="edit_container seperator">
+				<span class="">&nbsp;</span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>
+		</script>
+		<script type="text/handlebars" id="template_video">
+			<div class="edit_container video">
+				<span class="cell video"></span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>
+		</script>
+		<script type="text/handlebars" id="template_calendar">
+			<div class="edit_container calendar">
+				<span class="cell toolLabel" {{updateable 'label' 'INPUT TEXT LABEL: '}}> </span>
+				<span class="cell"><input type="text" class="calendar" readonly="readonly" /></span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>
+		</script>
+		<script type="text/handlebars" id="template_multiselect">
+			<div class="edit_container multiselect">
+				<span class="cell toolLabel" {{updateable 'label' 'INPUT TEXT LABEL: '}}> </span>
+				<span class="cell"><select class="multiselect" disabled="disabled"></select></span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>
+		</script>
+		<script type="text/handlebars" id="template_image">
+			<input type="hidden" {{updateable 'Url'}} />
+			<div class="edit_container image">
+				<span class="cell image"></span>
+				<span class="edit cell hasIcon" {{action 'edit'}}></span>
+			</div>
+		</script>
+		<script type="text/handlebars" id="template_label"> 
+			<div class="edit_container label">
+				<span class="cell"><pre><h2 {{updateable 'TXA_text'}} ></h2></pre> </span>
+				<span class="edit cell hasIcon white" {{action 'edit'}}></span>
+			</div>
+		</script>
+
+		<!-- END USER TEMPLATES   -->
+		
+		
+		<!-- LIBRARIES -->
+		<script src="libs/jquery.min.js"></script>
+		<script src="libs/handlebars.js"></script>
+		<script src="libs/way.min.js"></script>
+		
+		<!-- SCRIPTS -->
+		<script src="scripts/apputil.js"></script>
+		<script src="scripts/tools.js"></script>
+		<script src="scripts/app.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,105 @@
+.editor-container .editor-menu-bar{ background: #2B2B2B; }
+.editor-container .editor-header{ background: #39393B; }
+.editor-container .editor-content-container .editor-sidebar{ background: #535358; }
+
+.editor-container .editor-content-container .editor-content{ background: #535358; }
+.editor-container .editor-content-container .editor-content{ 
+	border-left: 3px solid #2B2B2B;
+}
+
+.editor-container .editor-content-container .editor-content .editor-tool.page .editor-tool{ 
+	background: #EBEFF0; 
+	border-top: 3px #ffffff solid;
+}
+.editor-container .editor-content-container .editor-content .editor-tool.page { background: #ffffff; }
+
+/* .editor-container .editor-content-container .editor-content .editor-tool.page .editor-tool:nth-child(2n){ background: #F3F3F3; } */
+
+.editor-container .editor-content-container .editor-sidebar h2{ 
+	color: #ffffff;
+	background: #5D6165;
+}
+.editor-container .editor-content-container .editor-sidebar .editor-tools .tool{
+	color: #ffffff; 
+	background-position: center 10px;
+	background-repeat: no-repeat;
+}
+.editor-container .editor-content-container .editor-properties{
+	background: #535358;
+}
+.editor-container .editor-content-container .editor-tools .tool.page { background-image: url( ../images/page.png); }
+.editor-container .editor-content-container .editor-tools .tool.button { background-image: url( ../images/button.png); }
+.editor-container .editor-content-container .editor-tools .tool.textbox { background-image: url( ../images/textbox.png); }
+.editor-container .editor-content-container .editor-tools .tool.password { background-image: url( ../images/password.png); }
+.editor-container .editor-content-container .editor-tools .tool.radio { background-image: url( ../images/radiobutton.png); }
+.editor-container .editor-content-container .editor-tools .tool.checkbox { background-image: url( ../images/checkbox.png); }
+.editor-container .editor-content-container .editor-tools .tool.label { background-image: url( ../images/label.png); }
+.editor-container .editor-content-container .editor-tools .tool.calendar { background-image: url( ../images/calendar.png); }
+.editor-container .editor-content-container .editor-tools .tool.textarea { background-image: url( ../images/textarea.png); }
+.editor-container .editor-content-container .editor-tools .tool.selectbox { background-image: url( ../images/selectbox.png); }
+.editor-container .editor-content-container .editor-tools .tool.multiselect { background-image: url( ../images/multiselect.png); }
+.editor-container .editor-content-container .editor-tools .tool.link { background-image: url( ../images/link.png); }
+.editor-container .editor-content-container .editor-tools .tool.image { background-image: url( ../images/image.png); }
+.editor-container .editor-content-container .editor-tools .tool.video { background-image: url( ../images/youtube.png); }
+.editor-container .editor-content-container .editor-tools .tool.seperator { background-image: url( ../images/seperator.png); }
+
+.editor-container .editor-content-container .editor-properties .properties h1{ background: #5D6165; color: #ffffff }
+.editor-container .editor-content-container .editor-properties .properties h2{ color: #ffffff; }
+.editor-container .editor-content-container .editor-properties .properties .property{ }
+.editor-container .editor-content-container .editor-properties .properties .property input{}
+
+
+.editor-tool.page .edit_container > .edit.hasIcon { background-repeat: no-repeat; background-position: center center; }
+
+.editor-tool.page .edit_container > .edit.hasIcon { background-image: url(../images/editb.png); }
+.editor-tool.page .edit_container > .edit.hasIcon:hover { background-image: url(../images/edit.png); background-color: #2A80B9; }
+
+.editor-tool.page .edit_container > .edit.hasIcon.white { background-image: url(../images/edit.png); }
+.editor-tool.page .edit_container > .edit.hasIcon.white:hover { background-image: url(../images/editb.png); background-color: #ffffff; }
+
+.editor-properties .tabular-title.property th, .editor-properties .tabular-title.property td{
+	color: #ffffff;
+}
+
+.editor-properties .tabular-title.property{
+	background: #5D6165;
+}
+
+.editor-properties .button{
+	color: #ffffff; padding: 10px;
+	margin: 10px 0 10px 10px; display: inline-block; 
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.editor-properties .button.red{ 	background: #E74C3C; }
+.editor-properties .button.red:hover{ background: #ea6153; }
+
+.editor-properties .button.blue{ 	background: #3498DB; }
+.editor-properties .button.blue:hover{ background: #4aa3df; }
+
+.editor-container .editor-header h1{
+	color: #999999; 
+	padding: 9px 0 0 10px;
+	text-shadow: 2px 2px #000000;
+}
+.editor-container .editor-menu-bar{
+	padding-left: 143px;
+}
+.editor-container .editor-menu-bar a{
+	display: block;
+	float: left;
+	/*background: #2980B9;*/
+	color: #999999;
+	font-size: 11px;
+	padding: 8px 20px 0 20px;
+	box-sizing: border-box;
+	height: 100%;
+	/*color: white;*/
+	cursor: pointer;
+	/*border-right: 3px #2B2B2B solid;*/
+}
+.editor-container .editor-menu-bar a:hover{
+	background: #2e8ece;
+	color: white;
+}
